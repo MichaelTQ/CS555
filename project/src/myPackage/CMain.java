@@ -16,6 +16,7 @@ public class CMain
 		String in_fname = null;
 		String file_path = "./new_sample.ged";
 		System.out.println("Type file name to choose file:\n(default file is \"./new_sample.ged\", press \"Enter\" to continue)");
+		
 		try
 		{
 			BufferedReader bufferReader = new BufferedReader(new InputStreamReader(System.in));
@@ -47,7 +48,8 @@ public class CMain
 					continue;
 				}
 				
-				new MyEachLine(currentLine).checkValidLine(currentLine);
+				MyEachLine tmp_line = new MyEachLine(currentLine);
+				//tmp_line.myPrint();
 				System.out.println(currentLine);
 			}
 			
