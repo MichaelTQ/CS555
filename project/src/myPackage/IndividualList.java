@@ -32,4 +32,16 @@ public class IndividualList
 			return null;
 		}
 	}
+	
+	public IndividualNode getIndividualByID(String id)
+	{
+		for (int i = 0; i != this.arr_indi.size(); i++)
+		{
+			if(id.toUpperCase().equals(arr_indi.get(i).getID()))
+			{
+				return arr_indi.get(i);
+			}
+		}
+		return null;
+	}
 }

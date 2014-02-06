@@ -57,9 +57,6 @@ public class CMain
 				if (tmp_line.checkValid())
 				{
 					arr_lines.add(tmp_line);
-					//System.out.print(++i_line_num);
-					//System.out.print("===> ");
-					//System.out.println(currentLine);
 				}
 				else
 				{
@@ -67,9 +64,43 @@ public class CMain
 				}
 			}
 			
-			convertLines();// to convert lines and add them into FamilyList and IndividualList
+			//to convert lines and add them into FamilyList and IndividualList
+			//see definition of this method below. Line #127
+			convertLines();
 			
+			//make references from strings of id to class FamilyNode variable
+			for (int i = 0; i < indi_list.getSize(); i++)
+			{
+				indi_list.get(i).setFamilyNodes(fam_list);
+			}
+			
+			//make references from strings of id to class IndividualNode variable
+			for (int i = 0; i < fam_list.getSize(); i++)
+			{
+				fam_list.get(i).setIndiNodes(indi_list);
+			}
+			
+			//to print out two lists: fam_list and indi_list in their own way...
+			//see definition of this method below, Line #166
 			myPrintLists();
+			
+			//search tests & examples
+			if (indi_list.getIndividualByID("@I5@") != null)
+			{
+				System.out.println("Individual Name: " + indi_list.getIndividualByID("@I5@").getName());
+			}
+			if (indi_list.getIndividualByID("@I0@") != null)
+			{
+				System.out.println("Individual Name: " + indi_list.getIndividualByID("@I0@").getName());
+			}
+			if (fam_list.getFamilyByID("@F2@") != null)
+			{
+				System.out.println("Husband: " + fam_list.getFamilyByID("@F2@").getHusbStr());
+			}
+			if (fam_list.getFamilyByID("@F10@") != null)
+			{
+				System.out.println("Husband: " + fam_list.getFamilyByID("@F10@").getHusbStr());
+			}
 		}
 		catch(IOException e)
 		{
@@ -103,11 +134,6 @@ public class CMain
 		{
 			if (arr_lines.get(i).getLevel() == 0)
 			{
-				if (arr_lines.get(i).getTag().equals("TRLR"))
-				{
-					break;
-				}
-				
 				if (tmp_lines.size() != 0 && flag == 1)
 				{
 					IndividualNode tmp_indi_node = new IndividualNode(tmp_lines);
@@ -141,9 +167,9 @@ public class CMain
 	
 	private static void myPrintLists()
 	{
-		System.out.println("==========");
 		for (int i = 0; i < indi_list.getSize(); i++)
 		{
+			System.out.println("===INDI===");
 			IndividualNode tmp_node = indi_list.get(i);
 			System.out.println("ID: " + tmp_node.getID());
 			System.out.println("Name: " + tmp_node.getName());
@@ -157,25 +183,23 @@ public class CMain
 			{
 				System.out.println("DEAT: null");
 			}
-			
-			for (int j = 0; j < tmp_node.getFamcStrArr().size(); j++)
+			for (int j = 0; j < tmp_node.getFamcNodeArr().size(); j++)
 			{
-				System.out.println("FAMC: " + tmp_node.getFamcStrArr().get(j));
+				System.out.println("FAMC: " + tmp_node.getFamcNodeArr().get(j).getID());
 			}
-			
-			for (int j = 0; j < tmp_node.getFamsStrArr().size(); j++)
+			for (int j = 0; j < tmp_node.getFamsNodeArr().size(); j++)
 			{
-				System.out.println("FAMS: " + tmp_node.getFamsStrArr().get(j));
+				System.out.println("FAMS: " + tmp_node.getFamsNodeArr().get(j).getID());
 			}
 		}
-		System.out.println("==========");
 		for (int i = 0; i < fam_list.getSize(); i++)
 		{
+			System.out.println("===FAM====");
 			FamilyNode tmp_node = fam_list.get(i);
 			System.out.println("ID: " + tmp_node.getID());
+			System.out.println("HUSB: " + tmp_node.getHusbNode().getID());
+			System.out.println("WIFE: " + tmp_node.getWifeNode().getID());
 			System.out.println("MARR: " + tmp_node.getMARR().getDateStr());
-			System.out.println("HUSB: " + tmp_node.getHusbStr());
-			System.out.println("WIFE: " + tmp_node.getWifeStr());
 			if(tmp_node.getDIV() != null)
 			{
 				System.out.println("DIV: " + tmp_node.getDIV().getDateStr());
@@ -184,6 +208,11 @@ public class CMain
 			{
 				System.out.println("DIV: null");
 			}
+			for (int j = 0; j < tmp_node.getChildrenNode().size(); j++)
+			{
+				System.out.println("CHIL: " + tmp_node.getChildrenNode().get(j).getID());
+			}
 		}
+		System.out.println("===========");
 	}
 }

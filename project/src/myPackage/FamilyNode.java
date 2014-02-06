@@ -39,6 +39,10 @@ public class FamilyNode
 			{
 				this.str_wife = arr_lines.get(i).getArg();
 			}
+			else if (arr_lines.get(i).getTag().toUpperCase().equals("CHIL"))
+			{
+				this.list_str_children.add(arr_lines.get(i).getArg());
+			}
 			else if (arr_lines.get(i).getTag().toUpperCase().equals("DIV"))
 			{
 				flag = "DIV";
@@ -62,10 +66,10 @@ public class FamilyNode
 		}
 	}
 	
-	public void setIndiNodes(ArrayList<IndividualNode> list_indi)
+	public void setIndiNodes(IndividualList list_indi)
 	{
 		this.list_node_children = new ArrayList<IndividualNode>();
-		for (int i = 0; i < list_indi.size(); i++)
+		for (int i = 0; i < list_indi.getSize(); i++)
 		{
 			if (this.str_husb.equals(list_indi.get(i).getID()))
 			{

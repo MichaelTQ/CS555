@@ -32,4 +32,16 @@ public class FamilyList
 			return null;
 		}
 	}
+	
+	public FamilyNode getFamilyByID(String id)
+	{
+		for (int i = 0; i != this.arr_fam.size(); i++)
+		{
+			if (id.toUpperCase().equals(arr_fam.get(i).getID()))
+			{
+				return arr_fam.get(i);
+			}
+		}
+		return null;
+	}
 }

@@ -64,27 +64,33 @@ public class IndividualNode
 				}
 				else if (flag == "DEAT")
 				{
-					this.birt = new MyDate(arr_lines.get(i).getArg());
+					this.deat = new MyDate(arr_lines.get(i).getArg());
 				}
 			}
 		}
 	}
 	
-	public void setFamilyNodes(ArrayList<FamilyNode> fam_list)
+	public void setFamilyNodes(FamilyList fam_list)
 	{
 		this.arr_node_famc = new ArrayList<FamilyNode>();
 		this.arr_node_fams = new ArrayList<FamilyNode>();
 		
 		for (int i = 0; i < this.arr_str_famc.size(); i++)
 		{
-			for (int j = 0; j < fam_list.size(); j++)
+			for (int j = 0; j < fam_list.getSize(); j++)
 			{
 				if (fam_list.get(j).getID().equals(arr_str_famc.get(i)))
 				{
 					this.arr_node_famc.add(fam_list.get(j));
 				}
-				
-				if (fam_list.get(i).getID().equals(arr_str_fams.get(i)))
+			}
+		}
+		
+		for (int i = 0; i < this.arr_str_fams.size(); i++)
+		{
+			for (int j = 0; j < fam_list.getSize(); j++)
+			{
+				if (fam_list.get(j).getID().equals(arr_str_fams.get(i)))
 				{
 					this.arr_node_fams.add(fam_list.get(j));
 				}
@@ -125,5 +131,15 @@ public class IndividualNode
 	public ArrayList<String> getFamsStrArr()
 	{
 		return this.arr_str_fams;
+	}
+	
+	public ArrayList<FamilyNode> getFamcNodeArr()
+	{
+		return this.arr_node_famc;
+	}
+	
+	public ArrayList<FamilyNode> getFamsNodeArr()
+	{
+		return this.arr_node_fams;
 	}
 }
