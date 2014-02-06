@@ -48,6 +48,33 @@ public class MyDate
 	{
 		setCurrentDate();
 		this.raw_str = new_raw_str;
+		int tmp_day = -1;
+		int tmp_year = -1;
+		String tmp_month = null;
+		
+		for (int i = 0; i < new_raw_str.length(); i++)
+		{
+			if (new_raw_str.charAt(i) == ' ')
+			{
+				
+				tmp_day = new Integer(new_raw_str.substring(0, i));
+				for (int j = i + 1; j < new_raw_str.length(); j++)
+				{
+					if (new_raw_str.charAt(j) == ' ')
+					{
+						tmp_month = new_raw_str.substring(i + 1, j);
+						tmp_year = new Integer(new_raw_str.substring(j + 1));
+						break;
+					}
+				}
+				break;
+			}
+		}
+		
+		if (setDate(tmp_day, tmp_month, tmp_year) != true)
+		{
+			System.out.println("Error in setting the date!===> " + this.raw_str);
+		}
 	}
 	
 	public MyDate(int new_day, String new_month, int new_year)
@@ -58,12 +85,23 @@ public class MyDate
 	
 	public void myPrintCurDate()
 	{
-		System.out.println("==============");
+		System.out.println("==========");
 		String result_str = "Date now:\n";
 		result_str += "Year: ";
 		result_str += new Integer(this.cur_year).toString() + "\n";
 		result_str += "Month: " + this.cur_month + "\n";
 		result_str += "Date: " + new Integer(this.cur_day).toString();
+		System.out.println(result_str);
+	}
+	
+	public void myPrint()
+	{
+		System.out.println("==========");
+		String result_str = "the Date:\n";
+		result_str += "Year: ";
+		result_str += new Integer(this.year).toString() + "\n";
+		result_str += "Month: " + this.month + "\n";
+		result_str += "Date: " + new Integer(this.day).toString();
 		System.out.println(result_str);
 	}
 		
@@ -124,7 +162,7 @@ public class MyDate
 		}
 		else
 		{
-			return true;
+			return false;
 		}
 	}
 	
@@ -208,5 +246,10 @@ public class MyDate
 		{
 			return false;
 		}
+	}
+	
+	public String getDateStr()
+	{
+		return new Integer(this.day).toString() + " " + this.month + " " + new Integer(this.year).toString();
 	}
 }

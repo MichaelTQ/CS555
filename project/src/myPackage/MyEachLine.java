@@ -9,13 +9,43 @@ public class MyEachLine
 	public String arg;
 	
 	private static String [] arr_tags = {"INDI", "SEX", "BIRT", "DEAT", "FAMC", "FAMS",
-		"FAM", "MARR", "HUSB", "WIFE", "CHIL", "DIV", "DATE", "TRLR", "NOTE"};
+		"FAM", "MARR", "HUSB", "WIFE", "CHIL", "DIV", "DATE", "TRLR", "NOTE", "NAME"};
 	
 	public MyEachLine(String whole_line)
 	{
 		//parse every line into level, tag, argument...
 		//0 @I1@ INDI ==> level:0, tag: INDI, arg:@I1@
 		setValidLine(whole_line);
+	}
+	
+	public boolean checkValid()
+	{
+		if (this.level > 2 || this.level < 0)
+		{
+			return false;
+		}
+		if (this.tag == null)
+		{
+			return false;
+		}
+		if (this.arg == null)
+		{
+			if (this.level == 1)
+			{
+				if (Arrays.asList("BIRT", "DEAT", "DIV", "MARR").contains(this.tag) != true)
+				{
+					return false;
+				}
+			}
+			else if (this.level == 0 && this.tag != "TRLR")
+			{
+				return false;
+			}
+		}
+		
+		// We can do a lot more here...
+		
+		return true;
 	}
 	
 	public boolean setValidLine(String whole_line)
@@ -36,6 +66,21 @@ public class MyEachLine
 					System.out.println("Format error in level number: " + tmp_level);
 					return false;
 				}
+				
+				if (tmp_level == 0)
+				{
+					if (i+1 <= whole_line.length())
+					{
+						String tmp_str = whole_line.substring(i+1);
+						if(tmp_str.equals("TRLR"))
+						{
+							this.arg = null;
+							this.tag = "TRLR";
+							break;
+						}
+					}
+				}
+				
 				//System.out.println(tmp_level);
 				for (int j = i+1; j < whole_line.length(); j++)
 				{
@@ -50,7 +95,7 @@ public class MyEachLine
 							tmp_tag = whole_line.substring(i + 1, j);
 						}
 						//System.out.println(tmp_tag);
-						if(j+1 <= whole_line.length())
+						if (j+1 <= whole_line.length())
 						{
 							if (tmp_level == 0)
 							{
@@ -62,9 +107,13 @@ public class MyEachLine
 							}
 								
 						}
-						System.out.println("tag===>" + tmp_tag);
-						System.out.println("arg===>" + tmp_arg);
 						break;
+					}
+					
+					if (j == whole_line.length() - 1)
+					{
+						tmp_tag = whole_line.substring(i + 1);
+						tmp_arg = null;
 					}
 				}
 				break;
@@ -89,10 +138,6 @@ public class MyEachLine
 			{
 				return false;
 			}
-		}
-		else if(tmp_level != 1)
-		{
-			return false;
 		}
 		
 		this.level = tmp_level;
@@ -122,4 +167,18 @@ public class MyEachLine
 		System.out.println("Argument: " + this.arg);
 	}
 	
+	public int getLevel()
+	{
+		return this.level;
+	}
+	
+	public String getTag()
+	{
+		return this.tag;
+	}
+	
+	public String getArg()
+	{
+		return this.arg;
+	}
 }
