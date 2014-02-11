@@ -6,3 +6,14 @@
 1 FAMC @F21@
 0 NOTE BIRTHDAY IS IN THE FUTURE
 
+0 @F22@ FAM
+1 HUSB @I23@
+1 WIFE @I24@
+
+0 @I23@ INDI
+1 FAMC @F23@
+
+0 @I24@
+1 FAMC @F23@
+
+0 NOTE family reocrd and individual records not matched
