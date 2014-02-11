@@ -4,7 +4,7 @@
 1 BIRT
 2 DATE 1 JAN 2015
 1 FAMC @F21@
-0 NOTE BIRTHDAY IS IN THE FUTURE
+0 NOTE birthday should not be in the future
 
 0 @F22@ FAM
 1 HUSB @I23@
@@ -16,4 +16,4 @@
 0 @I24@
 1 FAMC @F23@
 
-0 NOTE family reocrd and individual records not matched
+0 NOTE family records and individual records not matched
