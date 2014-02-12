@@ -1,5 +1,5 @@
 0 @I20@ INDI
-1 Name Miao /Li/
+1 NAME Miao /Li/
 1 SEX M
 1 BIRT
 2 DATE 1 JAN 2015
@@ -17,3 +17,47 @@
 1 FAMC @F23@
 
 0 NOTE family records and individual records not matched
+
+0 @I25@
+1 Name Jack /Lu/
+1 SEX M
+1 DEAT
+2 DATE 3 MAR 1987
+1 FAMS @F24@
+
+0 @F24@
+1 HUSB @I25@
+1 WIFE @I26@
+1 MARR
+2 DATE 5 MAR 1988
+
+0 NOTE marry date should before Jack's death
+
+0 @I26@
+1 NAME JERRY /ZHU/
+1 SEX F
+1 FAMS @F25@
+1 FAMC @F25@
+0 NOTE she cannot be a child and a wife in a family in the same time
+
+0 @I27@
+1 NAME LUIS /ANNA/
+1 SEX F
+1 BIRT
+2 DATE 30 FEB 1965
+0 NOTE there is no day 30 in Feb
+
+0 @I28@
+1 NAME WOOD /SHERRY/
+1 SEX F
+1 BIRT
+2 DATE 2 JUL 1787
+1 FAMS @F26@
+
+0 @I29@
+1 NAME HARRY /WALT/
+1 SEX M
+1 BIRT 3 SEP 1887
+1 FAMC @F26@
+
+0 NOTE The age gap between mother and children can not be more than 100 years
