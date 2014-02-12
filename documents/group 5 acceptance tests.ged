@@ -135,6 +135,7 @@ HUSB @I9@
 
 0 @I12@ INDI
 1 NAME Brand /Peter/
+1 SEX M
 1 BIRT
 2 DATE 20 SEP 1980
 1 FAMC @F5@
@@ -143,6 +144,7 @@ HUSB @I9@
 
 0 @I13@ INDI
 1 NAME Annie /Peter/
+1 SEX F
 1 BIRT
 2 DATE 15 AUG 1982
 1 FAMC @F4@
@@ -165,6 +167,7 @@ HUSB @I9@
 
 0 @I14@ INDI
 1 NAME Lily /Wang
+1 SEX F
 1 BIRT
 2 DATE 14 MAY 1970
 1 FAMC @F5@
@@ -172,6 +175,7 @@ HUSB @I9@
 
 0 @I15@ INDI
 1 NAME Woody /Liu/
+1 SEX F
 1 BIRT
 2 DATE 13 Feb 1960
 1 FAMC @F7@
@@ -179,6 +183,7 @@ HUSB @I9@
 
 0 @I16@ INDI
 1 NAME Mary /Zhu/
+1 SEX F
 1 BIRT
 2 DATE 9 Nov 1962
 1 FAMC @F8@
@@ -193,6 +198,7 @@ HUSB @I9@
 
 0 @I17@ INDI
 1 NAME Xiyi /Bian/
+1 SEX M
 1 BIRT
 2 DATE 24 DEC 1940
 1 FAMC @F10@
@@ -200,6 +206,7 @@ HUSB @I9@
 
 0 @I18@ INDI
 1 NAME Liu /Fan/
+1 SEX F
 1 BIRT
 2 DATE 10 NOV 1942
 1 FAMC @F11@
@@ -216,6 +223,7 @@ HUSB @I9@
 
 0 @I19@ INDI
 1 NAME Peter /Fu/
+1 SEX M
 1 BIRT
 2 DATE 9 APR 1949
 1 FAMC @F13@
@@ -223,6 +231,7 @@ HUSB @I9@
 
 0 @I20@ INDI
 1 NAME Penny /Pian/
+1 SEX F
 1 BIRT
 2 DATE 14 MAY 1950
 1 FAMC @F14@
@@ -230,6 +239,7 @@ HUSB @I9@
 
 0 @I21@ INDI
 1 NAME Sam /Fu/
+1 SEX M
 1 BIRT
 2 DATE 18 JUN 1948
 1 FAMC @F15@
@@ -244,6 +254,7 @@ HUSB @I9@
 
 0 @I22@ INDI
 1 NAME Tim /Brown/
+1 SEX M
 1 BIRT
 2 DATE 15 JUN 1954
 1 FAMC @F16@
@@ -251,6 +262,7 @@ HUSB @I9@
 
 0 @I23@ INDI
 1 NAME Lucy /Luke/
+1 SEX F
 1 BIRT
 2 DATE 20 JUL 1955
 1 FAMC  @F17@
@@ -265,14 +277,14 @@ HUSB @I9@
 
 0 @I24@ INDI
 1 NAME Invy /Wang/
+1 SEX F
 1 BIRT
 2 DATE 20 JUL 1970
 1 FAMC @F19@
 1 FAMS @F20@
 0 NOTE The person has a FAMS but doesn’t get married.
 
-
-0 @I25@ INDI
+0 @I54@ INDI
 1 NAME Jason /Smith/
 1 SEX M
 1 BIRT
@@ -280,7 +292,7 @@ HUSB @I9@
 1 FAMC @F21@
 0 NOTE Son of family F21
 
-0 @I25@ INDI
+0 @I55@ INDI
 1 NAME Will /Smith/
 1 SEX M
 1 BIRT
@@ -293,55 +305,45 @@ HUSB @I9@
 1 CHIL @I24@
 0 NOTE this family’s child is older than his father
 
-0 @I26@ INDI
-1 NAME Sue /Lee/
-1 SEX F
-1 BIRT
-2 DATE 10 FEB 1800
+
+0 @I25@
+1 Name Jack /Lu/
+1 SEX M
 1 DEAT
-2 DATE 9 FEB 1800
-0 NOTE Her death date is earlier than her birthday
+2 DATE 3 MAR 1987
+1 FAMS @F24@
 
-0 @I27@ INDI
-1 NAME Taylor /Swift/
+0 @F24@
+1 HUSB @I25@
+1 WIFE @I26@
+1 MARR
+2 DATE 5 MAR 1988
+0 NOTE marry date should before Jack's death
+
+0 @I26@
+1 NAME JERRY /ZHU/
+1 SEX F
+1 FAMS @F25@
+1 FAMC @F25@
+0 NOTE she cannot be a child and a wife in a family in the same time
+
+0 @I27@
+1 NAME LUIS /ANNA/
 1 SEX F
 1 BIRT
-2 DATE 21 MAY 1992
-1 FAMS @F22@
+2 DATE 30 FEB 1965
+0 NOTE there is no day 30 in Feb
 
-0 @I28@ INDI
-1 NAME Tom /Swift/
-1 SEX M
-1 BIRT
-2 DATE 21 MAY 1992
-1 FAMS @F22@
-
-0 @F22@ FAM
-1 HUSB @I27@
-1 WIFE @I28@
-0 NOTE This family’s husband and wife are brother and sister.
-
-0 @I29@ INDI
-1 NAME Tom Hanks
-1 SEX M
-1 BIRT
-2 DATE 30 FEB 1969
-0 NOTE His Birthday is wrong
-
-0 @I30@ INDI
-1 NAME Mary /Lee/
+0 @I28@
+1 NAME WOOD /SHERRY/
 1 SEX F
 1 BIRT
-2 DATE 28 OCT 1956
-1 FAMS @F23@
+2 DATE 2 JUL 1787
+1 FAMS @F26@
 
-0 @I31@ INDI
-1 NAME Indiana /Jones/
+0 @I29@
+1 NAME HARRY /WALT/
 1 SEX M
-1 BIRT
-2 DATE 22 NOV 1299
-1 FAMC @F23@
-
-0 @F23@ FAM
-1 HUSB @I31@
-1 CHIL @I30@
+1 BIRT 3 SEP 1887
+1 FAMC @F26@
+0 NOTE The age gap between mother and children can not be more than 100 years

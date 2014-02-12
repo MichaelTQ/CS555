@@ -1,4 +1,4 @@
-0 @I20@ INDI
+0 @I99@ INDI
 1 NAME Miao /Li/
 1 SEX M
 1 BIRT
@@ -15,7 +15,6 @@
 
 0 @I24@
 1 FAMC @F23@
-
 0 NOTE family records and individual records not matched
 
 0 @I25@
@@ -30,7 +29,6 @@
 1 WIFE @I26@
 1 MARR
 2 DATE 5 MAR 1988
-
 0 NOTE marry date should before Jack's death
 
 0 @I26@
@@ -59,5 +57,4 @@
 1 SEX M
 1 BIRT 3 SEP 1887
 1 FAMC @F26@
-
 0 NOTE The age gap between mother and children can not be more than 100 years
