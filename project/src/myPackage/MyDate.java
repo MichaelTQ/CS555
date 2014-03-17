@@ -168,7 +168,7 @@ public class MyDate
 	
 	//I don't really know whether or not to keep the setFucntions.
 	@SuppressWarnings("unused")
-	private boolean setDay(int new_day)
+	private boolean setDate(int new_day)
 	{
 		if(setDate(new_day, this.month, this.year) != false)
 		{
@@ -180,7 +180,7 @@ public class MyDate
 		}
 	}
 	
-	public int getDay()
+	public int getDate()
 	{
 		return this.day;
 	}
@@ -209,9 +209,9 @@ public class MyDate
 	//return the month number 1 ~ 12
 	public int getMonthNumber()
 	{
-		if(Arrays.asList(array_month).contains(this.month) == true)
+		if(Arrays.asList(array_month).contains(this.month.toUpperCase()) == true)
 		{
-			return Arrays.asList(array_month).indexOf(this.month) - 1;
+			return Arrays.asList(array_month).indexOf(this.month) + 1;
 		}
 		else
 		{
@@ -230,6 +230,11 @@ public class MyDate
 		{
 			return false;
 		}
+	}
+	
+	public int getYear()
+	{
+		return this.year;
 	}
 	
 	public boolean selfCheck()

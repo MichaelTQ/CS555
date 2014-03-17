@@ -82,7 +82,7 @@ public class CMain
 			
 			//to print out two lists: fam_list and indi_list in their own way...
 			//see definition of this method below, Line #166
-			myPrintLists();
+			//myPrintLists();
 			
 			//search tests & examples
 			if (indi_list.getIndividualByID("@I5@") != null)
@@ -101,6 +101,11 @@ public class CMain
 			{
 				System.out.println("Husband: " + fam_list.getFamilyByID("@F10@").getHusbStr());
 			}
+			
+			// All the check methods go HERE~
+			new Checker();
+			Checker.dateFormatChecker(fam_list, indi_list);
+			Checker.checkFamilyExistence(fam_list, indi_list);
 		}
 		catch(IOException e)
 		{
@@ -165,6 +170,7 @@ public class CMain
 		}
 	}
 	
+	@SuppressWarnings("unused")
 	private static void myPrintLists()
 	{
 		for (int i = 0; i < indi_list.getSize(); i++)
