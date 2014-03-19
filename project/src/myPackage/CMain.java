@@ -189,14 +189,39 @@ public class CMain
 			{
 				System.out.println("DEAT: null");
 			}
-			for (int j = 0; j < tmp_node.getFamcNodeArr().size(); j++)
+			/*By Xiyu Zhu, check if FAMC and FAMS are perfectly done.*/
+			if(tmp_node.getFamcNodeArr().size()==0 && !tmp_node.getFamcStrArr().isEmpty())
 			{
-				System.out.println("FAMC: " + tmp_node.getFamcNodeArr().get(j).getID());
+				System.out.println("Family " + tmp_node.getFamcStrArr().get(0).toString() + " does not exist.");
 			}
-			for (int j = 0; j < tmp_node.getFamsNodeArr().size(); j++)
+			else if(tmp_node.getFamcNodeArr().size()==0 && tmp_node.getFamcStrArr().isEmpty())
 			{
-				System.out.println("FAMS: " + tmp_node.getFamsNodeArr().get(j).getID());
+				System.out.println("FAMC is not mentioned.");
 			}
+			else
+			{
+				for (int j = 0; j < tmp_node.getFamcNodeArr().size(); j++)
+				{
+					System.out.println("FAMC: " + tmp_node.getFamcNodeArr().get(j).getID());
+				}
+			}
+			
+			if(tmp_node.getFamsNodeArr().size()==0 && !tmp_node.getFamsStrArr().isEmpty())
+			{
+				System.out.println("Family " + tmp_node.getFamsStrArr().get(0).toString() + " does not exist.");
+			}
+			else if(tmp_node.getFamsNodeArr().size()==0 && tmp_node.getFamsStrArr().isEmpty())
+			{
+				System.out.println("FAMS is not mentioned.");
+			}
+			else
+			{
+				for (int j = 0; j < tmp_node.getFamsNodeArr().size(); j++)
+				{
+					System.out.println("FAMS: " + tmp_node.getFamsNodeArr().get(j).getID());
+				}
+			}
+			/*End*/
 		}
 		for (int i = 0; i < fam_list.getSize(); i++)
 		{
