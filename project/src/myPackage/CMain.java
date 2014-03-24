@@ -47,6 +47,7 @@ public class CMain
 			int i_line_num = 0;
 			while((currentLine = br.readLine()) != null)
 			{
+				i_line_num++;
 				//Read each line from the .ged file.
 				currentLine = currentLine.trim();
 				if (currentLine.isEmpty())
@@ -60,7 +61,7 @@ public class CMain
 				}
 				else
 				{
-					System.out.println("Line: #" + new Integer(i_line_num).toString() + "is deleted.");
+					System.out.println("Line: #" + new Integer(i_line_num).toString() + " is deleted.");
 				}
 			}
 			
@@ -106,6 +107,7 @@ public class CMain
 			new Checker();
 			Checker.dateFormatChecker(fam_list, indi_list);
 			Checker.checkFamilyExistence(fam_list, indi_list);
+			Checker.checkParentsChildrenBDay(fam_list);
 		}
 		catch(IOException e)
 		{
