@@ -7,12 +7,12 @@ import myPackage.IndividualList;
 
 import org.junit.Test;
 
-public class T06_CheckTags
+public class T22_CheckHUSBWIFETags
 {
 	FileReadingTest frt = new FileReadingTest();
 	private static FamilyList fam_list = new FamilyList();
 	private static IndividualList indi_list = new IndividualList();
-	String file_path = "./T06.ged";
+	String file_path = "./T22.ged";
 	
 	@Test
 	public void test() {

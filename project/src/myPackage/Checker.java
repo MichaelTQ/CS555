@@ -40,7 +40,7 @@ public class Checker
 			if (husb == null || wife == null)
 			{
 				//T22
-				System.out.println("Father or Wife in Family \"" + fam_list.get(i).getID() + "\" does not exist!");
+				System.out.println("Husband or Wife in Family \"" + fam_list.get(i).getID() + "\" does not exist!");
 				return false;
 			}
 			else

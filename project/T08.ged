@@ -1,0 +1,22 @@
+0 @I8@ INDI
+1 NAME Kathy /Qian/
+1 SEX F
+1 BIRT
+2 DATE 12 MAY 1963
+1 FAMC @F3@
+1 FAMC @F4@
+
+0 @F3@ FAM
+1 HUSB @I6@
+1 WIFE @I7@
+1 CHIL @I8@
+1 MARR
+2 DATE 3 APR 1960
+
+0 @F4@ FAM
+1 HUSB @I9@
+1 WIFE @I10@
+1 CHIL @I8@
+1 MARR
+2 DATE 20 JUN 1961
+0 NOTE This child belongs to two family.

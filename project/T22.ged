@@ -1,0 +1,10 @@
+0 @I23@ INDI
+1 FAMC @F23@
+
+0 @I24@ INDI
+1 FAMC @F23@
+
+0 @F22@ FAM
+1 HUSB @I23@
+1 WIFE @I24@
+0 NOTE family records and individual records not matched

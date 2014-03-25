@@ -163,6 +163,7 @@ public class MyEachLine
 		}
 		else
 		{
+			System.out.println("Tag: \"" + tmp_tag + "\" is not valid.");
 			return false;
 		}
 	}
