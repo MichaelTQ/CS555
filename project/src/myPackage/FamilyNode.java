@@ -74,6 +74,7 @@ public class FamilyNode
 	{
 		this.list_node_children = new ArrayList<IndividualNode>();
 <<<<<<< HEAD
+<<<<<<< HEAD
 		this.list_node_husb = new ArrayList<IndividualNode>();
 		this.list_node_wife = new ArrayList<IndividualNode>();
 		for (int i = 0; i < list_indi.getSize(); i++)
@@ -92,6 +93,11 @@ public class FamilyNode
 		
 		for (int i = 0; i < list_indi.getSize(); i++)
 		{
+=======
+		
+		for (int i = 0; i < list_indi.getSize(); i++)
+		{
+>>>>>>> FETCH_HEAD
 			//T07
 			if (this.str_husb == null || this.str_wife == null)
 			{
