@@ -47,6 +47,7 @@ public class CMain
 			int i_line_num = 0;
 			while((currentLine = br.readLine()) != null)
 			{
+				i_line_num++;
 				//Read each line from the .ged file.
 				currentLine = currentLine.trim();
 				if (currentLine.isEmpty())
@@ -60,7 +61,7 @@ public class CMain
 				}
 				else
 				{
-					System.out.println("Line: #" + new Integer(i_line_num).toString() + "is deleted.");
+					System.out.println("Line: #" + new Integer(i_line_num).toString() + " is deleted.");
 				}
 			}
 			
@@ -82,7 +83,7 @@ public class CMain
 			
 			//to print out two lists: fam_list and indi_list in their own way...
 			//see definition of this method below, Line #166
-			//myPrintLists();
+			myPrintLists();
 			
 			//search tests & examples
 			if (indi_list.getIndividualByID("@I5@") != null)
@@ -106,6 +107,13 @@ public class CMain
 			new Checker();
 			Checker.dateFormatChecker(fam_list, indi_list);
 			Checker.checkFamilyExistence(fam_list, indi_list);
+<<<<<<< HEAD
+			Checker.checkChildrenBelongingness(fam_list);
+			Checker.checkHusbWifeNumber(fam_list);
+			Checker.checkDivorce(fam_list);
+=======
+			Checker.checkParentsChildrenBDay(fam_list);
+>>>>>>> FETCH_HEAD
 		}
 		catch(IOException e)
 		{
@@ -170,7 +178,7 @@ public class CMain
 		}
 	}
 	
-	@SuppressWarnings("unused")
+	//@SuppressWarnings("unused")
 	private static void myPrintLists()
 	{
 		for (int i = 0; i < indi_list.getSize(); i++)
@@ -189,47 +197,33 @@ public class CMain
 			{
 				System.out.println("DEAT: null");
 			}
-			/*By Xiyu Zhu, check if FAMC and FAMS are perfectly done.*/
-			if(tmp_node.getFamcNodeArr().size()==0 && !tmp_node.getFamcStrArr().isEmpty())
+			
+			for (int j = 0; j < tmp_node.getFamcNodeArr().size(); j++)
 			{
-				System.out.println("Family " + tmp_node.getFamcStrArr().get(0).toString() + " does not exist.");
-			}
-			else if(tmp_node.getFamcNodeArr().size()==0 && tmp_node.getFamcStrArr().isEmpty())
-			{
-				System.out.println("FAMC is not mentioned.");
-			}
-			else
-			{
-				for (int j = 0; j < tmp_node.getFamcNodeArr().size(); j++)
-				{
-					System.out.println("FAMC: " + tmp_node.getFamcNodeArr().get(j).getID());
-				}
+				System.out.println("FAMC: " + tmp_node.getFamcNodeArr().get(j).getID());
 			}
 			
-			if(tmp_node.getFamsNodeArr().size()==0 && !tmp_node.getFamsStrArr().isEmpty())
+			for (int j = 0; j < tmp_node.getFamsNodeArr().size(); j++)
 			{
-				System.out.println("Family " + tmp_node.getFamsStrArr().get(0).toString() + " does not exist.");
+				System.out.println("FAMS: " + tmp_node.getFamsNodeArr().get(j).getID());
 			}
-			else if(tmp_node.getFamsNodeArr().size()==0 && tmp_node.getFamsStrArr().isEmpty())
-			{
-				System.out.println("FAMS is not mentioned.");
-			}
-			else
-			{
-				for (int j = 0; j < tmp_node.getFamsNodeArr().size(); j++)
-				{
-					System.out.println("FAMS: " + tmp_node.getFamsNodeArr().get(j).getID());
-				}
-			}
-			/*End*/
 		}
+		
 		for (int i = 0; i < fam_list.getSize(); i++)
 		{
 			System.out.println("===FAM====");
 			FamilyNode tmp_node = fam_list.get(i);
 			System.out.println("ID: " + tmp_node.getID());
-			System.out.println("HUSB: " + tmp_node.getHusbNode().getID());
-			System.out.println("WIFE: " + tmp_node.getWifeNode().getID());
+//			System.out.println("HUSB: " + tmp_node.getHusbNode().getID());
+//			System.out.println("WIFE: " + tmp_node.getWifeNode().getID());
+			for (int j = 0; j < tmp_node.getHusbNode().size(); j++)
+			{
+				System.out.println("HUSB: " + tmp_node.getHusbNode().get(j).getID());
+			}
+			for (int j = 0; j < tmp_node.getWifeNode().size(); j++)
+			{
+				System.out.println("WIFE: " + tmp_node.getWifeNode().get(j).getID());
+			}
 			System.out.println("MARR: " + tmp_node.getMARR().getDateStr());
 			if(tmp_node.getDIV() != null)
 			{

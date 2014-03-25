@@ -180,7 +180,7 @@ public class MyDate
 		}
 	}
 	
-	public int getDate()
+	public int getDay()
 	{
 		return this.day;
 	}
