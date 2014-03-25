@@ -7,14 +7,18 @@ public class FamilyNode
 	private String id;
 	private MyDate marr = null;
 	private MyDate div = null;
-	private String str_husb;
-	private String str_wife;
+//	private String str_husb;
+//	private String str_wife;
 	
-	private IndividualNode node_husb;
-	private IndividualNode node_wife;
+//	private IndividualNode node_husb;
+//	private IndividualNode node_wife;
 	private ArrayList<String> list_str_children = new ArrayList<String>();
+	private ArrayList<String> list_str_husb = new ArrayList<String>();
+	private ArrayList<String> list_str_wife = new ArrayList<String>();
 	
 	private ArrayList<IndividualNode> list_node_children = new ArrayList<IndividualNode>();
+	private ArrayList<IndividualNode> list_node_husb = new ArrayList<IndividualNode>();
+	private ArrayList<IndividualNode> list_node_wife = new ArrayList<IndividualNode>();
 	private ArrayList<String> arr_notes;
 	
 	public FamilyNode(ArrayList<MyEachLine> arr_lines)
@@ -33,11 +37,11 @@ public class FamilyNode
 			}
 			else if (arr_lines.get(i).getTag().toUpperCase().equals("HUSB"))
 			{
-				this.str_husb = arr_lines.get(i).getArg();
+				this.list_str_husb.add(arr_lines.get(i).getArg());
 			}
 			else if (arr_lines.get(i).getTag().toUpperCase().equals("WIFE"))
 			{
-				this.str_wife = arr_lines.get(i).getArg();
+				this.list_str_wife.add(arr_lines.get(i).getArg());
 			}
 			else if (arr_lines.get(i).getTag().toUpperCase().equals("CHIL"))
 			{
@@ -69,16 +73,47 @@ public class FamilyNode
 	public void setIndiNodes(IndividualList list_indi)
 	{
 		this.list_node_children = new ArrayList<IndividualNode>();
+<<<<<<< HEAD
+		this.list_node_husb = new ArrayList<IndividualNode>();
+		this.list_node_wife = new ArrayList<IndividualNode>();
 		for (int i = 0; i < list_indi.getSize(); i++)
 		{
-			if (this.str_husb.equals(list_indi.get(i).getID()))
+//			if (this.str_husb.equals(list_indi.get(i).getID()))
+//			{
+//				this.node_husb = list_indi.get(i);
+//			}
+//			
+//			if (this.str_wife.equals(list_indi.get(i).getID()))
+//			{
+//				this.node_wife = list_indi.get(i);
+//			}
+			for (int j = 0; j < this.list_str_husb.size(); j++)
+=======
+		
+		for (int i = 0; i < list_indi.getSize(); i++)
+		{
+			//T07
+			if (this.str_husb == null || this.str_wife == null)
 			{
-				this.node_husb = list_indi.get(i);
+				//System.out.println("Missing Husb or Wife in Family: \"" + this.id + "\"");
+				return;
 			}
 			
-			if (this.str_wife.equals(list_indi.get(i).getID()))
+			if (this.str_husb.equals(list_indi.get(i).getID()))
+>>>>>>> FETCH_HEAD
 			{
-				this.node_wife = list_indi.get(i);
+				if(list_str_husb.get(j).equals(list_indi.get(i).getID()))
+				{
+					this.list_node_husb.add(list_indi.get(i));
+				}
+			}
+			
+			for (int j = 0; j < this.list_str_wife.size(); j++)
+			{
+				if(list_str_wife.get(j).equals(list_indi.get(i).getID()))
+				{
+					this.list_node_wife.add(list_indi.get(i));
+				}
 			}
 			
 			for (int j = 0; j < this.list_str_children.size(); j++)
@@ -106,24 +141,34 @@ public class FamilyNode
 		return this.div;
 	}
 	
-	public String getHusbStr()
+//	public String getHusbStr()
+//	{
+//		return this.str_husb;
+//	}
+//	
+//	public String getWifeStr()
+//	{
+//		return this.str_wife;
+//	}
+	public ArrayList<String> getHusbStr()
 	{
-		return this.str_husb;
+		return this.list_str_husb;
 	}
 	
-	public String getWifeStr()
+	public ArrayList<IndividualNode> getHusbNode()
 	{
-		return this.str_wife;
+//		return this.node_husb;
+		return this.list_node_husb;
 	}
 	
-	public IndividualNode getHusbNode()
+	public ArrayList<String> getWifeStr()
 	{
-		return this.node_husb;
+		return this.list_str_wife;
 	}
 	
-	public IndividualNode getWifeNode()
+	public ArrayList<IndividualNode> getWifeNode()
 	{
-		return this.node_wife;
+		return this.list_node_wife;
 	}
 	
 	public ArrayList<String> getChildrenStr()

@@ -7,12 +7,12 @@ import myPackage.IndividualList;
 
 import org.junit.Test;
 
-public class T06_CheckTags
+public class T18_CheckFAMS
 {
 	FileReadingTest frt = new FileReadingTest();
 	private static FamilyList fam_list = new FamilyList();
 	private static IndividualList indi_list = new IndividualList();
-	String file_path = "./T06.ged";
+	String file_path = "./T18.ged";
 	
 	@Test
 	public void test() {
@@ -23,6 +23,7 @@ public class T06_CheckTags
 		new Checker();
 		assertEquals(Checker.checkFamilyExistence(fam_list, indi_list), true);
 		assertEquals(Checker.checkParentsChildrenBDay(fam_list), true);
+		assertEquals(Checker.dateFormatChecker(fam_list, indi_list), true);
 	}
 
 }

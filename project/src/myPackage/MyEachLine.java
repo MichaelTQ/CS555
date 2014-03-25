@@ -7,7 +7,7 @@ public class MyEachLine
 	public int level;
 	public String tag;
 	public String arg;
-	
+	//check the tags T06
 	private static String [] arr_tags = {"INDI", "SEX", "BIRT", "DEAT", "FAMC", "FAMS",
 		"FAM", "MARR", "HUSB", "WIFE", "CHIL", "DIV", "DATE", "TRLR", "NOTE", "NAME"};
 	
@@ -20,6 +20,8 @@ public class MyEachLine
 	
 	public boolean checkValid()
 	{
+		//System.out.print(this.arg + " ");
+		//System.out.println(this.tag);
 		if (this.level > 2 || this.level < 0)
 		{
 			return false;
@@ -89,6 +91,12 @@ public class MyEachLine
 						if (tmp_level == 0)
 						{
 							tmp_arg = whole_line.substring(i + 1, j);
+							if (tmp_arg.toUpperCase().equals("NOTE"))
+							{
+								tmp_tag = tmp_arg;
+								tmp_arg = whole_line.substring(j + i, whole_line.length());
+								break;
+							}
 						}
 						else
 						{
@@ -105,7 +113,6 @@ public class MyEachLine
 							{
 								tmp_arg = whole_line.substring(j+1, whole_line.length());
 							}
-								
 						}
 						break;
 					}
@@ -147,6 +154,7 @@ public class MyEachLine
 		return true;
 	}
 	
+	//check tags T06
 	private boolean checkTag(String tmp_tag)
 	{
 		if (Arrays.asList(arr_tags).contains(tmp_tag))
@@ -155,6 +163,7 @@ public class MyEachLine
 		}
 		else
 		{
+			System.out.println("Tag: \"" + tmp_tag + "\" is not valid.");
 			return false;
 		}
 	}

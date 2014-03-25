@@ -19,12 +19,29 @@ public class FileReadingTest {
 	private static ArrayList<MyEachLine> arr_lines = new ArrayList<MyEachLine>();
 	private static FamilyList fam_list = new FamilyList();
 	private static IndividualList indi_list = new IndividualList();
+	String file_path = "./new_sample.ged";
 	
 	@Test
 	public void test()
 	{
+		check_file(file_path);
+		assertEquals(fam_list.getSize(), 3);
+		assertEquals(indi_list.getSize(), 10);
+	}
+	
+	public FamilyList getFList()
+	{
+		return FileReadingTest.fam_list;
+	}
+	
+	public IndividualList getIList()
+	{
+		return FileReadingTest.indi_list;
+	}
+	
+	public void check_file(String file_path)
+	{
 		BufferedReader br = null;
-		String file_path = "./new_sample.ged";
 		try
 		{
 			
@@ -58,8 +75,6 @@ public class FileReadingTest {
 			{
 				fam_list.get(i).setIndiNodes(indi_list);
 			}
-			assertEquals(fam_list.getSize(), 3);
-			assertEquals(indi_list.getSize(), 10);
 		}
 		catch (IOException e)
 		{
