@@ -107,17 +107,11 @@ public class CMain
 			new Checker();
 			Checker.dateFormatChecker(fam_list, indi_list);
 			Checker.checkFamilyExistence(fam_list, indi_list);
-<<<<<<< HEAD
-<<<<<<< HEAD
 			Checker.checkChildrenBelongingness(fam_list);
 			Checker.checkHusbWifeNumber(fam_list);
 			Checker.checkDivorce(fam_list);
-=======
 			Checker.checkParentsChildrenBDay(fam_list);
->>>>>>> FETCH_HEAD
-=======
 			Checker.checkParentsChildrenBDay(fam_list);
->>>>>>> FETCH_HEAD
 		}
 		catch(IOException e)
 		{

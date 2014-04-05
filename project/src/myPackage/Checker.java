@@ -4,6 +4,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 
@@ -17,15 +18,14 @@ public class Checker
 		{
 			if(indi_list.get(i).getFamcNodeArr().size()==0 && !indi_list.get(i).getFamcStrArr().isEmpty())
 			{
-<<<<<<< HEAD
 				return_flag=false;
 				System.out.println(indi_list.get(i).getID()+": Family " + indi_list.get(i).getFamcStrArr().get(0).toString() + " does not exist.");
-=======
+
 				return_flag = false;
 				//System.out.println(indi_list.get(i).getFamcNodeArr().size() + "||" + indi_list.get(i).getFamcStrArr().size());
 				//System.out.println(fam_list.getSize());
 				System.out.println(indi_list.get(i).getID() + ": FAMC error!");
->>>>>>> FETCH_HEAD
+
 			}
 			else if(indi_list.get(i).getFamcNodeArr().size()==0 && indi_list.get(i).getFamcStrArr().isEmpty())
 			{
@@ -47,46 +47,46 @@ public class Checker
 		return return_flag;
 	}
 	
-	//T24 T18 T19 T22
-	public static boolean checkParentsChildrenBDay(FamilyList fam_list)
-	{
-		boolean return_flag = true;
-		for (int i = 0; i < fam_list.getSize(); i++)
-		{
-			IndividualNode husb = fam_list.get(i).getHusbNode();
-			IndividualNode wife = fam_list.get(i).getWifeNode();
-			
-			if (husb == null || wife == null)
-			{
-				//T22
-				System.out.println("Husband or Wife in Family \"" + fam_list.get(i).getID() + "\" does not exist!");
-				return false;
-			}
-			else
-			{
-				int husb_year = fam_list.get(i).getHusbNode().getBIRT().getYear();
-				int wife_year = fam_list.get(i).getWifeNode().getBIRT().getYear();
-				
-				for (int j = 0; j < fam_list.get(i).getChildrenNode().size(); j++)
-				{
-					int child_year = fam_list.get(i).getChildrenNode().get(j).getBIRT().getYear();
-					if (child_year < husb_year || child_year < wife_year)
-					{
-						//T19
-						System.out.println("Parent is younger than his/her child in Family \"" + fam_list.get(i).getID() + "\"");
-						return false;
-					}
-					else if ((child_year - husb_year) >= 100 || (child_year - wife_year) >= 100)
-					{
-						//T24
-						System.out.println("Parents are more than 100 years older than one of their children in Family \"" + fam_list.get(i).getID() + "\"");
-						return false;
-					}
-				}
-			}
-		}
-		return return_flag;
-	}
+//	//T24 T18 T19 T22
+//	public static boolean checkParentsChildrenBDay(FamilyList fam_list)
+//	{
+//		boolean return_flag = true;
+//		for (int i = 0; i < fam_list.getSize(); i++)
+//		{
+//			IndividualNode husb = fam_list.get(i).getHusbNode();
+//			IndividualNode wife = fam_list.get(i).getWifeNode();
+//			
+//			if (husb == null || wife == null)
+//			{
+//				//T22
+//				System.out.println("Husband or Wife in Family \"" + fam_list.get(i).getID() + "\" does not exist!");
+//				return false;
+//			}
+//			else
+//			{
+//				int husb_year = fam_list.get(i).getHusbNode().getBIRT().getYear();
+//				int wife_year = fam_list.get(i).getWifeNode().getBIRT().getYear();
+//				
+//				for (int j = 0; j < fam_list.get(i).getChildrenNode().size(); j++)
+//				{
+//					int child_year = fam_list.get(i).getChildrenNode().get(j).getBIRT().getYear();
+//					if (child_year < husb_year || child_year < wife_year)
+//					{
+//						//T19
+//						System.out.println("Parent is younger than his/her child in Family \"" + fam_list.get(i).getID() + "\"");
+//						return false;
+//					}
+//					else if ((child_year - husb_year) >= 100 || (child_year - wife_year) >= 100)
+//					{
+//						//T24
+//						System.out.println("Parents are more than 100 years older than one of their children in Family \"" + fam_list.get(i).getID() + "\"");
+//						return false;
+//					}
+//				}
+//			}
+//		}
+//		return return_flag;
+//	}
 	
 	//T24 T18 T19 T22
 	public static boolean checkParentsChildrenBDay(FamilyList fam_list)
@@ -94,8 +94,8 @@ public class Checker
 		boolean return_flag = true;
 		for (int i = 0; i < fam_list.getSize(); i++)
 		{
-			IndividualNode husb = fam_list.get(i).getHusbNode();
-			IndividualNode wife = fam_list.get(i).getWifeNode();
+			ArrayList<IndividualNode> husb = fam_list.get(i).getHusbNode();
+			ArrayList<IndividualNode> wife = fam_list.get(i).getWifeNode();
 			
 			if (husb == null || wife == null)
 			{
@@ -105,19 +105,32 @@ public class Checker
 			}
 			else
 			{
-				int husb_year = fam_list.get(i).getHusbNode().getBIRT().getYear();
-				int wife_year = fam_list.get(i).getWifeNode().getBIRT().getYear();
+				List<Integer> husb_year = new ArrayList<Integer>();
+				List<Integer> wife_year = new ArrayList<Integer>();
+			
+				for(int j = 0; j < fam_list.get(i).getHusbNode().size(); j++)
+				{
+					husb_year.add(fam_list.get(i).getHusbNode().get(j).getBIRT().getYear());
+				}
+				
+				for(int j = 0; j < fam_list.get(i).getWifeNode().size(); j++)
+				{
+					wife_year.add(fam_list.get(i).getWifeNode().get(j).getBIRT().getYear());
+				}
+				
+				Arrays.sort(husb_year.toArray());
+				Arrays.sort(wife_year.toArray());
 				
 				for (int j = 0; j < fam_list.get(i).getChildrenNode().size(); j++)
 				{
 					int child_year = fam_list.get(i).getChildrenNode().get(j).getBIRT().getYear();
-					if (child_year < husb_year || child_year < wife_year)
+					if (child_year < husb_year.get(husb_year.size()-1) || child_year < wife_year.get(wife_year.size()-1))
 					{
 						//T19
 						System.out.println("Parent is younger than his/her child in Family \"" + fam_list.get(i).getID() + "\"");
 						return false;
 					}
-					else if ((child_year - husb_year) >= 100 || (child_year - wife_year) >= 100)
+					else if ((child_year - husb_year.get(husb_year.size()-1)) >= 100 || (child_year - wife_year.get(wife_year.size()-1)) >= 100)
 					{
 						//T24
 						System.out.println("Parents are more than 100 years older than one of their children in Family \"" + fam_list.get(i).getID() + "\"");

@@ -73,40 +73,11 @@ public class FamilyNode
 	public void setIndiNodes(IndividualList list_indi)
 	{
 		this.list_node_children = new ArrayList<IndividualNode>();
-<<<<<<< HEAD
-<<<<<<< HEAD
 		this.list_node_husb = new ArrayList<IndividualNode>();
 		this.list_node_wife = new ArrayList<IndividualNode>();
 		for (int i = 0; i < list_indi.getSize(); i++)
 		{
-//			if (this.str_husb.equals(list_indi.get(i).getID()))
-//			{
-//				this.node_husb = list_indi.get(i);
-//			}
-//			
-//			if (this.str_wife.equals(list_indi.get(i).getID()))
-//			{
-//				this.node_wife = list_indi.get(i);
-//			}
 			for (int j = 0; j < this.list_str_husb.size(); j++)
-=======
-		
-		for (int i = 0; i < list_indi.getSize(); i++)
-		{
-=======
-		
-		for (int i = 0; i < list_indi.getSize(); i++)
-		{
->>>>>>> FETCH_HEAD
-			//T07
-			if (this.str_husb == null || this.str_wife == null)
-			{
-				//System.out.println("Missing Husb or Wife in Family: \"" + this.id + "\"");
-				return;
-			}
-			
-			if (this.str_husb.equals(list_indi.get(i).getID()))
->>>>>>> FETCH_HEAD
 			{
 				if(list_str_husb.get(j).equals(list_indi.get(i).getID()))
 				{
