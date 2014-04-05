@@ -111,6 +111,12 @@ public class CMain
 			Checker.checkHusbWifeNumber(fam_list);
 			Checker.checkDivorce(fam_list);
 			Checker.checkParentsChildrenBDay(fam_list);
+			Checker.checkChildrenBelongingness(fam_list);
+			Checker.checkHusbWifeNumber(fam_list);
+			Checker.checkDivorce(fam_list);
+
+			Checker.checkParentsChildrenBDay(fam_list);
+
 			Checker.checkParentsChildrenBDay(fam_list);
 		}
 		catch(IOException e)
