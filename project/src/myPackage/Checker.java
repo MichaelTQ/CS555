@@ -320,21 +320,21 @@ public class Checker
 				
 				if(birthYear>deathYear)
 				{
-					System.out.println("INDI "+indi_list.get(i).getID()+"'s Birthday and death date error!");
+					System.out.println("INDI "+indi_list.get(i).getID()+"'s Birth and death date error!");
 					return_flag = false;
 				}
 				else
 				{
 					if(birthMonth>deathMonth)
 					{
-						System.out.println("INDI "+indi_list.get(i).getID()+"'s Birthday and death date error!");
+						System.out.println("INDI "+indi_list.get(i).getID()+"'s Birth and death date error!");
 						return_flag = false;
 					}
 					else if(birthMonth==deathMonth)
 					{
 						if(birthDay>deathDay)
 						{
-							System.out.println("INDI "+indi_list.get(i).getID()+"'s Birthday and death date error!");
+							System.out.println("INDI "+indi_list.get(i).getID()+"'s Birth and death date error!");
 							return_flag = false;
 						}
 						else
