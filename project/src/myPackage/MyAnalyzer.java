@@ -33,7 +33,7 @@ public class MyAnalyzer {
 	public static double getDivRate()
 	{
 		div_rate = (double)(div_num)/(double)(fam_num)*100;
-		System.out.println("Divorce rate is: "+div_rate+"%");
+		System.out.println("Divorce rate is: "+div_rate+" %");
 		return div_rate;
 	}
 	
