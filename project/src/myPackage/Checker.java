@@ -201,7 +201,7 @@ public class Checker
 	}
 	
 	//check if children belong to only one certain family
-	public static boolean checkChildrenBelongingness(FamilyList fam_list)
+	public static boolean checkKidsBelongingness(FamilyList fam_list)
 	{
 		boolean return_flag = true;
 		List<String> ChildrenList = new ArrayList<String>();
@@ -254,12 +254,6 @@ public class Checker
 	public static boolean checkDivorce(FamilyList fam_list)
 	{
 		boolean return_flag = true;
-		int divDay = -1;
-		int divMonth = -1;
-		int divYear = -1;
-		int marrDay = -1;
-		int marrMonth = -1;
-		int marrYear = -1;
 		
 		for (int i = 0; i < fam_list.getSize(); i++)
 		{
@@ -267,12 +261,12 @@ public class Checker
 			MyDate div = fam_list.get(i).getDIV();
 			if(div!=null && marr!=null)
 			{
-				divDay = div.getDay();
-				divMonth = div.getMonthNumber();
-				divYear = div.getYear();
-				marrDay = marr.getDay();
-				marrMonth = marr.getMonthNumber();
-				marrYear = marr.getYear();
+				int divDay = div.getDay();
+				int divMonth = div.getMonthNumber();
+				int divYear = div.getYear();
+				int marrDay = marr.getDay();
+				int marrMonth = marr.getMonthNumber();
+				int marrYear = marr.getYear();
 				if(marrYear > divYear)
 				{
 					return_flag = false;
@@ -303,6 +297,51 @@ public class Checker
 				if(return_flag == false)
 				{
 					System.out.println("Family "+fam_list.get(i).getID()+" has a marrage issue.");
+				}
+			}
+		}
+		return return_flag;
+	}
+	
+	public static boolean checkBD(IndividualList indi_list)
+	{
+		boolean return_flag = true;
+		
+		for(int i=0; i<indi_list.getSize(); i++)
+		{			
+			if(indi_list.get(i).getBIRT()!=null&&indi_list.get(i).getDEAT()!=null)
+			{
+				int birthYear = indi_list.get(i).getBIRT().getYear();
+				int birthMonth = indi_list.get(i).getBIRT().getMonthNumber();
+				int birthDay = indi_list.get(i).getBIRT().getDay();
+				int deathYear = indi_list.get(i).getDEAT().getYear();
+				int deathMonth = indi_list.get(i).getDEAT().getMonthNumber();
+				int deathDay = indi_list.get(i).getDEAT().getDay();
+				
+				if(birthYear>deathYear)
+				{
+					System.out.println("INDI "+indi_list.get(i).getID()+"'s Birthday and death date error!");
+					return_flag = false;
+				}
+				else
+				{
+					if(birthMonth>deathMonth)
+					{
+						System.out.println("INDI "+indi_list.get(i).getID()+"'s Birthday and death date error!");
+						return_flag = false;
+					}
+					else if(birthMonth==deathMonth)
+					{
+						if(birthDay>deathDay)
+						{
+							System.out.println("INDI "+indi_list.get(i).getID()+"'s Birthday and death date error!");
+							return_flag = false;
+						}
+						else
+						{
+							return_flag = true;
+						}
+					}
 				}
 			}
 		}

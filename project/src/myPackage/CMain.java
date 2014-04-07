@@ -107,17 +107,20 @@ public class CMain
 			new Checker();
 			Checker.dateFormatChecker(fam_list, indi_list);
 			Checker.checkFamilyExistence(fam_list, indi_list);
-			Checker.checkChildrenBelongingness(fam_list);
+			Checker.checkKidsBelongingness(fam_list);
 			Checker.checkHusbWifeNumber(fam_list);
 			Checker.checkDivorce(fam_list);
 			Checker.checkParentsChildrenBDay(fam_list);
-			Checker.checkChildrenBelongingness(fam_list);
-			Checker.checkHusbWifeNumber(fam_list);
-			Checker.checkDivorce(fam_list);
-
-			Checker.checkParentsChildrenBDay(fam_list);
-
-			Checker.checkParentsChildrenBDay(fam_list);
+			Checker.checkBD(indi_list);
+			
+			System.out.println("===ANLY===");
+			new MyAnalyzer();
+			MyAnalyzer.getMarrNum(fam_list);
+			MyAnalyzer.getDivNum(fam_list);
+			MyAnalyzer.getDivRate();
+			MyAnalyzer.getHusbAvgMarrAge(fam_list);
+			MyAnalyzer.getWifeAvgMarrAge(fam_list);
+			MyAnalyzer.getChildrenNum(fam_list);
 		}
 		catch(IOException e)
 		{
@@ -189,6 +192,7 @@ public class CMain
 		{
 			System.out.println("===INDI===");
 			IndividualNode tmp_node = indi_list.get(i);
+			System.out.println("INDI "+tmp_node.getID()+" belongs to "+tmp_node.getSurname()+"'s family.");
 			System.out.println("ID: " + tmp_node.getID());
 			System.out.println("Name: " + tmp_node.getName());
 			System.out.println("Sex: " + tmp_node.getSex());
@@ -217,6 +221,8 @@ public class CMain
 		{
 			System.out.println("===FAM====");
 			FamilyNode tmp_node = fam_list.get(i);
+			tmp_node.SurnameCheck();
+			tmp_node.MARRCheck();
 			System.out.println("ID: " + tmp_node.getID());
 //			System.out.println("HUSB: " + tmp_node.getHusbNode().getID());
 //			System.out.println("WIFE: " + tmp_node.getWifeNode().getID());
@@ -242,6 +248,6 @@ public class CMain
 				System.out.println("CHIL: " + tmp_node.getChildrenNode().get(j).getID());
 			}
 		}
-		System.out.println("===========");
+		System.out.println("===CHK====");
 	}
 }

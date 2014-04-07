@@ -6,6 +6,7 @@ public class IndividualNode
 {
 	private String id;
 	private String name;
+	private String surname;
 	private String sex;
 	private MyDate birt;
 	private MyDate deat;
@@ -96,6 +97,37 @@ public class IndividualNode
 				}
 			}
 		}
+	}
+	
+	public String getSurname(){
+		int slash_num=0;
+		this.surname="";
+		for(int i=0;i<name.length()-1;i++){
+			
+			if(slash_num==1) this.surname=this.surname+name.charAt(i);
+			if(name.charAt(i)=='/') slash_num++;
+		}
+		return this.surname;
+	}
+	
+	public boolean SurnameFormatCheck(){
+		int slash_num=0;
+		for(int i=0;i<name.length();i++){
+			if((name.charAt(i)=='/')& (slash_num==1)){
+				return true;}
+			if((name.charAt(i)=='/')&&(slash_num==0)) slash_num++;
+			else{
+			if(((name.charAt(i)<'A')||
+				(name.charAt(i)>'Z'))&&((name.charAt(i)<'a')||
+				(name.charAt(i)>'z'))&&(slash_num==1))
+				{
+				System.out.println("Surname Format Error!");
+				return false;
+				}
+			}	
+		}
+		System.out.println("Surname Format Error!");
+		return false;
 	}
 	
 	public String getID()

@@ -103,6 +103,86 @@ public class FamilyNode
 		}
 	}
 	
+	public boolean MARRCheck(){
+		for(int i=0; i<list_node_husb.size(); i++)
+		{
+			if((marr.getYear()<list_node_husb.get(i).getBIRT().getYear())) {System.out.println("MARR Error!");return false;}
+			else{
+				if((marr.getYear()==list_node_husb.get(i).getBIRT().getYear())&&(marr.getMonthNumber()<list_node_husb.get(i).getBIRT().getMonthNumber())){System.out.println("MARR Error!");return false;}
+				else{
+					if((marr.getYear()==list_node_husb.get(i).getBIRT().getYear())&&(marr.getMonthNumber()<list_node_husb.get(i).getBIRT().getMonthNumber())&&(marr.getDay()<list_node_husb.get(i).getBIRT().getDay())){
+						System.out.println("MARR Error!");return false;}
+				}
+			}
+
+			if((marr.getYear()<list_node_wife.get(i).getBIRT().getYear())) {System.out.println("MARR Error!");return false;}
+			else{
+				if((marr.getYear()==list_node_wife.get(i).getBIRT().getYear())&&(marr.getMonthNumber()<list_node_wife.get(i).getBIRT().getMonthNumber())){System.out.println("MARR Error!");return false;}
+				else{
+					if((marr.getYear()==list_node_wife.get(i).getBIRT().getYear())&&(marr.getMonthNumber()<list_node_wife.get(i).getBIRT().getMonthNumber())&&(marr.getDay()<list_node_wife.get(i).getBIRT().getDay())){
+						System.out.println("MARR Error!");return false;}
+				}
+			}
+		}
+			
+//		if((marr.getYear()<list_node_husb.get(i).getBIRT().getYear())||(marr.getYear()<node_wife.getBIRT().getYear())) {System.out.println("MARR Error!");return false;}
+//		else{
+//			if((marr.getYear()==node_husb.getBIRT().getYear())&&(marr.getMonthNumber()<node_husb.getBIRT().getMonthNumber())){System.out.println("MARR Error!");return false;}
+//			else{
+//				if((marr.getYear()==node_husb.getBIRT().getYear())&&(marr.getMonthNumber()<node_husb.getBIRT().getMonthNumber())&&(marr.getDay()<node_husb.getBIRT().getDay())){
+//					System.out.println("MARR Error!");return false;}
+//				else{
+//					if((marr.getYear()==node_wife.getBIRT().getYear())&&(marr.getMonthNumber()<node_wife.getBIRT().getMonthNumber())){System.out.println("MARR Error!");return false;}
+//					else{
+//						if((marr.getYear()==node_wife.getBIRT().getYear())&&(marr.getMonthNumber()<node_wife.getBIRT().getMonthNumber())&&(marr.getDay()<node_wife.getBIRT().getDay())){
+//							System.out.println("MARR Error!");return false;}
+//							}
+//						}
+//					}
+//				}
+		return true;
+	}
+	
+	public boolean SurnameCheck(){
+		if(list_node_husb.size()!=1)
+		{
+			System.out.println("Surname error!");
+			return false;
+		}
+		else
+		{
+			String husb_surname=list_node_husb.get(0).getSurname();
+			String check;
+			for (int i=0;i<this.list_node_children.size();i++){
+				check=this.list_node_children.get(i).getSurname();
+				if(!check.equals(husb_surname)) {
+					System.out.println("Surname Error! Daddy and kids don't share the same surname!");
+					System.out.println("Daddy's surname is: "+husb_surname+", while kids' surname is:"+check+"!");
+					return false;
+				}
+			}
+		}
+		return true;
+	}
+	public boolean MarriageDateCheck(){
+		MyDate M=this.getMARR();
+		MyDate D=this.getDIV();
+		if (M.getYear()>D.getYear()){System.out.println("Marrige Date is Error");
+		return false;}
+		else{if ((M.getYear()==D.getYear())&&(M.getMonthNumber()>D.getMonthNumber())){
+			System.out.println("Marrige Date is Error");
+			return false;
+		}
+		else{
+			if ((M.getYear()==D.getYear())&&(M.getMonthNumber()==D.getMonthNumber())&&(M.getDay()>D.getDay())){
+				System.out.println("Marrige Date is Error");
+				return false;
+		}
+		else return true;
+	}
+}
+}
+	
 	public String getID()
 	{
 		return this.id;
