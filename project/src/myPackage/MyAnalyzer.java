@@ -1,5 +1,6 @@
 package myPackage;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class MyAnalyzer {
@@ -9,6 +10,7 @@ public class MyAnalyzer {
 	private static double avg_kids_num;
 	private static int div_num;
 	private static int fam_num;
+	static DecimalFormat  df = new DecimalFormat("0.00");
 	
 	public static int getMarrNum(FamilyList fam_list)
 	{
@@ -33,7 +35,7 @@ public class MyAnalyzer {
 	public static double getDivRate()
 	{
 		div_rate = (double)(div_num)/(double)(fam_num)*100;
-		System.out.println("Divorce rate is: "+div_rate+"%");
+		System.out.println("Divorce rate is: "+df.format(div_rate)+" %");
 		return div_rate;
 	}
 	
@@ -53,7 +55,7 @@ public class MyAnalyzer {
 			}
 		}
 		husb_avg_marr_age /= fam_list.getSize();
-		System.out.println("The average marriage age of male is "+husb_avg_marr_age+" year old.");
+		System.out.println("The average marriage age of male is "+df.format(husb_avg_marr_age)+" year old.");
 		return husb_avg_marr_age;
 	}
 	
@@ -73,7 +75,7 @@ public class MyAnalyzer {
 			}
 		}
 		wife_avg_marr_age /= fam_list.getSize();
-		System.out.println("The average marriage age of female is "+wife_avg_marr_age+" year old.");
+		System.out.println("The average marriage age of female is "+df.format(wife_avg_marr_age)+" year old.");
 		return wife_avg_marr_age;
 	}
 	
@@ -85,7 +87,7 @@ public class MyAnalyzer {
 			avg_kids_num += list_node_children.size();
 		}
 		avg_kids_num /= fam_list.getSize();
-		System.out.println("Each family approximately has "+avg_kids_num+" kids.");
+		System.out.println("Each family approximately has "+df.format(avg_kids_num)+" kids.");
 		return avg_kids_num;
 	}
 	

@@ -201,6 +201,7 @@ public class Checker
 	}
 	
 	//check if children belong to only one certain family
+	//T103
 	public static boolean checkKidsBelongingness(FamilyList fam_list)
 	{
 		boolean return_flag = true;
@@ -231,6 +232,7 @@ public class Checker
 	}
 	
 	//check if a family hold only one couple
+	//T102
 	public static boolean checkHusbWifeNumber(FamilyList fam_list)
 	{
 		boolean return_flag = true;
@@ -251,6 +253,7 @@ public class Checker
 	}
 	
 	//check if the marriage stays correct. The date of divorce should goes after the date of marriage.
+	//T101
 	public static boolean checkDivorce(FamilyList fam_list)
 	{
 		boolean return_flag = true;
@@ -303,6 +306,7 @@ public class Checker
 		return return_flag;
 	}
 	
+	//T100
 	public static boolean checkBD(IndividualList indi_list)
 	{
 		boolean return_flag = true;
@@ -320,21 +324,21 @@ public class Checker
 				
 				if(birthYear>deathYear)
 				{
-					System.out.println("INDI "+indi_list.get(i).getID()+"'s Birthday and death date error!");
+					System.out.println("INDI "+indi_list.get(i).getID()+"'s Birth and death date error!");
 					return_flag = false;
 				}
 				else
 				{
 					if(birthMonth>deathMonth)
 					{
-						System.out.println("INDI "+indi_list.get(i).getID()+"'s Birthday and death date error!");
+						System.out.println("INDI "+indi_list.get(i).getID()+"'s Birth and death date error!");
 						return_flag = false;
 					}
 					else if(birthMonth==deathMonth)
 					{
 						if(birthDay>deathDay)
 						{
-							System.out.println("INDI "+indi_list.get(i).getID()+"'s Birthday and death date error!");
+							System.out.println("INDI "+indi_list.get(i).getID()+"'s Birth and death date error!");
 							return_flag = false;
 						}
 						else

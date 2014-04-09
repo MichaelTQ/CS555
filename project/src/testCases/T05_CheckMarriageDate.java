@@ -23,5 +23,4 @@ public class T05_CheckMarriageDate
 		new Checker();
 		assertEquals(Checker.checkFamilyExistence(fam_list, indi_list), true);
 	}
-
 }
