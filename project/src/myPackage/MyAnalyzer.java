@@ -35,7 +35,11 @@ public class MyAnalyzer {
 	public static double getDivRate()
 	{
 		div_rate = (double)(div_num)/(double)(fam_num)*100;
+<<<<<<< HEAD
 		System.out.println("Divorce rate is: "+df.format(div_rate)+" %");
+=======
+		System.out.println("Divorce rate is: "+div_rate+" %");
+>>>>>>> FETCH_HEAD
 		return div_rate;
 	}
 	
