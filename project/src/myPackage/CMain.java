@@ -112,7 +112,8 @@ public class CMain
 			Checker.checkDivorce(fam_list);
 			Checker.checkParentsChildrenBDay(fam_list);
 			Checker.checkBD(indi_list);
-			
+			Checker.checkSurname(fam_list);
+			Checker.SurnameFormatCheck(indi_list);
 			System.out.println("===ANLY===");
 			new MyAnalyzer();
 			MyAnalyzer.getMarrNum(fam_list);
@@ -221,8 +222,8 @@ public class CMain
 		{
 			System.out.println("===FAM====");
 			FamilyNode tmp_node = fam_list.get(i);
-			tmp_node.SurnameCheck();
-			tmp_node.MARRCheck();
+			//tmp_node.SurnameCheck();
+			//tmp_node.MARRCheck();
 			System.out.println("ID: " + tmp_node.getID());
 //			System.out.println("HUSB: " + tmp_node.getHusbNode().getID());
 //			System.out.println("WIFE: " + tmp_node.getWifeNode().getID());

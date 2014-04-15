@@ -9,7 +9,94 @@ import java.util.HashSet;
 import java.util.List;
 
 public class Checker
-{
+{	//T05
+	public static boolean checkMarriageDate(FamilyList fam_list){
+		MyDate M,D;
+		boolean return_flag = true;
+		for(int i=0; i<fam_list.getSize(); i++){
+			M=fam_list.get(i).getMARR();
+			D=fam_list.get(i).getDIV();
+			if (M.getYear()>D.getYear()){System.out.println("Marrige Date is Error");
+			return_flag= false;}
+			else{if ((M.getYear()==D.getYear())&&(M.getMonthNumber()>D.getMonthNumber())){
+				System.out.println("Marrige Date is Error");
+				return_flag=false;
+			}
+			else{
+				if ((M.getYear()==D.getYear())&&(M.getMonthNumber()==D.getMonthNumber())&&(M.getDay()>D.getDay())){
+					System.out.println("Marrige Date is Error");
+					return_flag=false;
+			}
+				else return_flag=true;
+			}
+			}
+			}
+		return return_flag;
+	}
+	//T13
+	
+	public static boolean SurnameFormatCheck(IndividualList indi_list){
+		boolean return_flag=false;
+		int slash_num=0;
+		int flag=0;
+		String name;
+		for(int i=0;i<indi_list.getSize();i++){
+		name=indi_list.get(i).getName();
+		slash_num=0;
+		return_flag=false;
+		flag=0;
+		for(int j=0;j<name.length();j++){
+			if (slash_num==2) flag=1;
+			if((name.charAt(j)=='/')& (slash_num==1)){
+				return_flag=true;
+				
+				}
+			if((name.charAt(j)=='/')) slash_num++;
+			else{
+			if(((name.charAt(j)<'A')||
+				(name.charAt(j)>'Z'))&&((name.charAt(j)<'a')||
+				(name.charAt(j)>'z'))&&(flag==1))
+				{
+				System.out.println(indi_list.get(i).getID()+": Surname Format Error!");
+				return_flag=false;
+				
+				}
+			}	
+		}
+	
+		if(return_flag!=true) {System.out.println(indi_list.get(i).getID()+": Surname Format Error!");
+		return_flag=false;
+		}
+		}
+		return return_flag;
+	}
+	//T17
+	public static boolean  checkSurname(FamilyList fam_list){
+		boolean return_flag=true;
+		for(int i=0;i<fam_list.getSize(); i++){
+			ArrayList<IndividualNode> husb=fam_list.get(i).getHusbNode();
+			ArrayList<IndividualNode> children=fam_list.get(i).getChildrenNode();
+			if(husb.size()!=1)
+		{
+			System.out.println("Surname error!");
+			return_flag=false;
+		}
+		else
+		{
+			String husb_surname=husb.get(0).getSurname();
+			String check;
+			for (int j=0;j<children.size();j++){
+				check=children.get(j).getSurname();
+				if(!check.equals(husb_surname)) {
+					System.out.println(fam_list.get(i).getID()+": Surname Error! Daddy and kids don't share the same surname!");
+					System.out.println("Daddy's surname is: "+husb_surname+", while kids' surname is:"+check+"!");
+					return_flag=false;
+				}
+			}
+		}
+			}
+		return return_flag;
+	}
 	//T04 T18
 	public static boolean checkFamilyExistence(FamilyList fam_list, IndividualList indi_list)
 	{
